@@ -18,5 +18,5 @@ dist/
 build/
 *.egg-info/
 
-/db_CSV
+db_CSV/
 schema.sql

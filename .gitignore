@@ -18,5 +18,5 @@ dist/
 build/
 *.egg-info/
 
-db_CSV/
-schema.sql
+flaskapp/db_CSV/
+flaskapp/schema.sql

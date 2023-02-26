@@ -17,3 +17,6 @@ htmlcov/
 dist/
 build/
 *.egg-info/
+
+/db_CSV
+schema.sql

@@ -51,7 +51,16 @@ def create_app(test_config=None):
     def studentDashboard():
         # return render_template('studentDashboard.html')
         pass
+
+    # DATABASE LINK
+    from . import db
+    db.init_app(app)
     
+    # AUTH LINK
+    from . import auth
+    app.register_blueprint(auth.bp)
+
+
     return app
 
 # # allows the running of the server automatically

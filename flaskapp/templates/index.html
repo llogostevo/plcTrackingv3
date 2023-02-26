@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %} - Dashboard {% endblock %}
+
+{% block head %}
+  {{ super() }}
+{% endblock %}
+
+{% block navigation %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+<!-- DASHBOARD CARDS -->
+
+{% if g.user %}
+      <div class="container">
+          <h1 class="p-3 ">{% block heading %} {{ g.user['firstName'] }} - Dashboard{% endblock %}</h1>
+          <div class="row g-2">
+            <div class="col-md-3 col-0"></div>  
+            <div class="col-md-6 col-12">
+              <div class="p-3 ">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Overall - Computer Science</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">OCR Computer Science</h6>
+                    <canvas id="courseProgress"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-0"></div>
+            <div class="col-md-6 col-12">
+              <div class="p-3 ">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Unit 1 - Computer Systems</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">OCR Computer Science</h6>
+                    <canvas id="unit1Progress"></canvas>
+                    <a href="studentUnitDashboard.html">Record Unit Judgements</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-12">
+              <div class="p-3 ">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Unit 2 Algorithms and Programming</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">OCR Computer Science</h6>
+                    <canvas id="unit2Progress"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END of CARDS -->
+    {% else %}
+          <p>You must be logged in to view this page</p>
+    {% endif %}
+{% endblock %}
+
+{% block footer %}
+    {{ super() }}
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+{% endblock %}

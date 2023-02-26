@@ -24,12 +24,19 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Dashboard - Joe Bloggs</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="dashboard-teacher.html"><em>Dashboard - Teacher</em></a>
-        </li>
+        {% if g.user %}
+          <li class="nav-item"><span>{{ g.user['username'] }}</span>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Dashboard - Joe Bloggs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="dashboard-teacher.html"><em>Dashboard - Teacher</em></a>
+          </li>
+          <li><a class="nav-link active" aria-current="page" href="{{ url_for('auth.logout') }}">Log Out</a>
+        {% else %}
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ url_for('auth.register') }}">Register</a>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ url_for('auth.login') }}">Log In</a>
+        {% endif %}
       </ul>
     </div>
   </div>
@@ -37,7 +44,16 @@
 {% endblock %}
 <!-- END OF NAVIGATION --> 
 
-<div id="content">{% block content %}{% endblock %}</div>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>
+
 
 <!-- FOOTER -->
 <footer class="footer mt-auto py-3 bg-light">
